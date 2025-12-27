@@ -1,0 +1,17 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.12.0"}
+
+        ;; Web server
+        http-kit/http-kit {:mvn/version "2.9.0-beta3"}
+
+        ;; Routing
+        metosin/reitit-ring {:mvn/version "0.7.2"}
+
+        ;; HTML rendering
+        hiccup/hiccup {:mvn/version "2.0.0-RC3"}
+
+        ;; Datastar SDK (the one causing the issue)
+        dev.data-star.clojure/sdk {:mvn/version "1.0.0-RC7"}
+        dev.data-star.clojure/http-kit {:mvn/version "1.0.0-RC7"}}
+
+ :aliases {:dev {:extra-paths ["dev"]}}}
