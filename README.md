@@ -69,25 +69,14 @@ Check server logs:
 
 ## The Problematic Code
 
-In `src/demo/datastar.clj`:
-
-```clojure
-(defn patch-elements! [sse hiccup]
-  (let [html (str (h/html hiccup))]
-    (ds/patch-fragments! sse [{:selector "#main"        ; Morphing #main
-                               :merge-mode "morph"       ; Using morph mode
-                               :settle-duration 300
-                               :fragments html
-                               :use-view-transition false}])))
-```
-
+In `src/demo/dashboard.clj`:
 The issue appears to be related to morphing the `#main` element which is the root element that contains the `data-init` directive that established the SSE connection.
 
 ## Workaround Attempts
 
 In the main project, we tried:
 1. Using `merge-mode "inner"` instead of `"outer"` - still had issues
-2. Implementing manual SSE without the SDK - this worked but lost SDK features
+2. Implementing manual SSE without the SDK - also disconnected after morph
 3. Changing the selector to a child element - worked but requires restructuring
 
 ## Environment
